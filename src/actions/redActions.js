@@ -1,0 +1,27 @@
+  
+import React from 'react'
+import axios from 'axios'
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
+// action types
+
+export const RED_FETCH = 'RED_FETCH';
+export const RED_SUCCESS = 'RED_SUCCESS';
+export const RED_FAILURE = 'RED_FAILURE';
+
+// action creator
+//fetchLog imports to Login
+export const fetchRed= () => dispatch => {
+
+  // action objects
+    dispatch({ type: RED_FETCH})
+  // from thunk (see below) do some async action and dispatch an error or success action
+  axiosWithAuth()
+      .get('https://davidanagy-posthere-flask.herokuapp.com/')
+      .then(res => {
+         console.log(res.data)
+        dispatch({ type: RED_SUCCESS, payload: res.data})
+
+      })
+      .catch(err =>  dispatch({ type: RED_FAILURE, payload: err }));
+};
