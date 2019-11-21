@@ -11,13 +11,13 @@ export const RED_FAILURE = 'RED_FAILURE';
 
 // action creator
 //fetchLog imports to Login
-export const fetchRed= () => dispatch => {
-
+export const fetchRed= (red) => dispatch => {
+    console.log(`red`, red)
   // action objects
-    dispatch({ type: RED_FETCH})
+    //dispatch({ type: RED_FETCH})
   // from thunk (see below) do some async action and dispatch an error or success action
   axiosWithAuth()
-      .get('https://davidanagy-posthere-flask.herokuapp.com/')
+      .post('https://davidanagy-posthere-flask.herokuapp.com/subreddit', red )
       .then(res => {
          console.log(res.data)
         dispatch({ type: RED_SUCCESS, payload: res.data})

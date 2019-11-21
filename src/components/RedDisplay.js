@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {connect} from 'react-redux'
 import {
   Card, CardText, CardBody, CardLink,
   CardTitle, CardSubtitle, UncontrolledCollapse, Button, TabContent, TabPane,
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
   
   
   
-  const ComplexGrid = (props) => {
+  const RedDisplay = (props) => {
   
       console.log(`props.fact.user_review`,props.fact)
    
@@ -85,4 +86,17 @@ const useStyles = makeStyles({
       </>
     );
   };
-  export default ComplexGrid;
+
+  const mapStateToProps = state => {
+    return {
+     title: state.favorites.myfavorites,
+
+      loggedInId: state.loginId.idUser
+    };
+   
+  };
+  
+  export default connect(
+    mapStateToProps,
+    { null }
+  )(Favorites);

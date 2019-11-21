@@ -11,7 +11,8 @@ const Reddit = (props) => {
   const [red, setRed] = useState(
     {
       title: '',
-      content: ''
+      text: '',
+      link: false
     }
   )
  
@@ -23,7 +24,7 @@ console.log(`red`, red)
 
   const handleSubmit = event => {
     event.preventDefault()
-    props.fetchRed()
+    props.fetchRed(red)
   }
 
 
@@ -52,12 +53,12 @@ console.log(`red`, red)
             margin="normal"
             required
             fullWidth
-            name="content"
-            label="content"
-            type="content"
-            id="content"
+            name="text"
+            label="text"
+            type="text"
+            id="text"
             autoComplete="current-content"
-            value={red.content}
+            value={red.text}
             onChange={handleChange}
           />
         <div>
