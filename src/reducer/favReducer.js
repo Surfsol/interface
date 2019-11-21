@@ -21,7 +21,7 @@ const redReducer = (state = initialState, action) => {
             error: '',
             favs: action.payload
           };
-        case RED_FAILURE:
+        case FAV_FAILURE:
           return {
             ...state,
             error: action.payload,
