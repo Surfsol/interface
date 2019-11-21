@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { connect } from 'react-redux'
 import {fetchRed} from '../actions/redActions'
 import TextField from '@material-ui/core/TextField';
+import RedDisplay from "./RedDisplay";
 
 
 
@@ -65,6 +66,7 @@ console.log(`red`, red)
         <button  type="submit">Get Reddit Data!</button>
         </div>
       </form>
+      <RedDisplay red={red}/>
     </div>
     </div>
   )

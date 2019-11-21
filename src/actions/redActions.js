@@ -25,3 +25,22 @@ export const fetchRed= (red) => dispatch => {
       })
       .catch(err =>  dispatch({ type: RED_FAILURE, payload: err }));
 };
+
+export const FAV_FETCH = 'FAV_FETCH';
+export const FAV_SUCCESS = 'FAV_SUCCESS';
+export const FAV_FAILURE = 'FAV_FAILURE';
+
+export const favRed= (red) => dispatch => {
+    console.log(`red`, red)
+  // action objects
+    //dispatch({ type: RED_FETCH})
+  // from thunk (see below) do some async action and dispatch an error or success action
+  axiosWithAuth()
+      .post('https://backend-posthere-russ-and-mack.herokuapp.com/posts/new', red )
+      .then(res => {
+         console.log(res.data)
+        dispatch({ type: FAV_SUCCESS, payload: res.data})
+
+      })
+      .catch(err =>  dispatch({ type: FAV_FAILURE, payload: err }));
+};
